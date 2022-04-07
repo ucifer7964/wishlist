@@ -3,7 +3,7 @@ from starlette.staticfiles import StaticFiles
 from starlette.middleware import Middleware
 from starlette.middleware.sessions import SessionMiddleware
 
-import admin.main
+# import admin.main
 from context_processors import CartMiddleware
 from dependencies import env
 import cart
