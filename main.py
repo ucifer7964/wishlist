@@ -11,9 +11,9 @@ import shop
 import orders
 import payment
 import coupon
-import admin
+# import admin
 import User
-from admin import main
+# from admin import main
 from shop import main, models
 from cart import main
 from orders import main, models
@@ -46,5 +46,5 @@ app.include_router(cart.main.router)
 app.include_router(orders.main.router)
 app.include_router(payment.main.router)
 app.include_router(coupon.main.router)
-app.include_router(admin.main.router)
+# app.include_router(admin.main.router)
 app.include_router(User.main.router)
