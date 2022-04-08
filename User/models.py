@@ -13,4 +13,4 @@ class User(Base):
     created_date = Column(DateTime, default=datetime.datetime.now)
     phone_number = Column(String(10), nullable=False,unique=True)
     password = Column(Text(), nullable=False)
-
+    orders = relationship("Order", back_populates="user")
