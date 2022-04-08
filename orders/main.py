@@ -54,7 +54,7 @@ def order_add(request: Request,
         return templates.TemplateResponse(template, {"request": request, "errors": errors, "cart":cart})
 
     db_order = crud.create_order(db, first_name, last_name, email, address, postal_code, 
-                                  city, coupon_id=cart.coupon_id,discount=cart.get_discount())
+                                  city, coupon_id=cart.coupon_id,discount=cart.get_discount(), user_id=current_user.id)
     order_id = db_order.id
     request.session["order_id"] = order_id
     total_price = cart.get_total_price_after_discount()

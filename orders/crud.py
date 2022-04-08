@@ -14,7 +14,8 @@ def create_order(db: Session = Depends(get_db),
                  postal_code: int = Form(...),
                  city: str = Form(...),
                  coupon_id: int = None,
-                 discount: int = 0):
+                 discount: int = 0,
+                 user_id=0):
     db_order = Order(first_name=first_name,
                      last_name=last_name,
                      email=email,
@@ -22,7 +23,8 @@ def create_order(db: Session = Depends(get_db),
                      postal_code=postal_code,
                      city=city,
                      coupon_id=coupon_id,
-                     discount=discount)
+                     discount=discount,
+                     user_id=user_id)
 
     db.add(db_order)
     db.commit()
