@@ -1,3 +1,4 @@
 # Wishlist
-## In this project you can create your wishlist of products.
-## You will get notified via mail.
+## In this project an Ecommerce website is there by which we can do online shopping..
+## All the modules has been developed using Fast API.
+
