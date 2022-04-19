@@ -13,14 +13,14 @@ router = APIRouter(
 
 @router.get("/")
 def cart_detail(request: Request,
-                msg: str = None,
+                msg: str = None,  # This message is coming through url if coupon is invalid
                 db: Session = Depends(get_db), current_user: int = Depends(OAuth2.get_current_user)):
     cart = Cart(request, db)
 
     template = env.get_template('cart.html')
     recommended_products = crud.product_list(db)
     return templates.TemplateResponse(template, {"request": request,
-                                                 "couponmsg": msg,
+                                                 "coupon_msg": msg,
                                                  "cart": cart,
                                                  "recommended_products": recommended_products})
 

@@ -2,7 +2,7 @@ import stripe
 from config import settings
 
 
-
+# This is predefined method for stripe which will take total price and redirects to the suitable urls
 def payment_process(total_price):
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],

@@ -33,7 +33,7 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Product Name</th>
-                                        <th>Until Price</th>
+                                        <th>Unit Price</th>
                                         <th>Qty</th>
                                         <th>Subtotal</th>
                                         <th>Action</th>
@@ -42,17 +42,17 @@
                                 <tbody>
 
                                     {% for item in cart %}
-                                        {% with product=item.product %}
+
                                             <tr>
                                                 <td class="product-thumbnail">
-                                                    <a href="#"><img class="cart_img" src="{{ product.url }}" alt="" /></a>
+                                                    <a href="#"><img class="cart_img" src="{{ item.product.url }}" alt="" /></a>
                                                 </td>
                                                 <form action="/cart/add" method="post">
-                                                    <td class="product-name"><a href="#">{{ product.name }}</a></td>
-                                                    <td class="product-price-cart"><span class="amount">{{ product.price }}</span></td>
+                                                    <td class="product-name"><a href="#">{{ item.product.name }}</a></td>
+                                                    <td class="product-price-cart"><span class="amount">{{ item.product.price }}</span></td>
                                                     <td class="product-quantity">
                                                         <span class="cart_quantity">
-                                                            <input type="hidden" name="id" placeholder="id" value="{{product.id}}" />
+                                                            <input type="hidden" name="id" placeholder="id" value="{{item.product.id}}" />
                                                             <input type="hidden" name="update" placeholder="update" value="True" />
                                                             <input class="cart_quantity" type="number" name="quantity" placeholder="quantity" value="{{item.quantity}}" />
                                                         </span>
@@ -63,11 +63,11 @@
                                                         <a id="refresh_icon" href="#">
                                                           <i class="fa fa-refresh"></i>
                                                         </a>
-                                                        <a href="/cart/remove/{{product.id}}"><i class="fa fa-times"></i></a>
+                                                        <a href="/cart/remove/{{item.product.id}}"><i class="fa fa-times"></i></a>
                                                     </td>
                                                 </form>
                                             </tr>
-                                        {% endwith %}
+
                                     {% endfor %}
                                 </tbody>
                             </table>
@@ -90,8 +90,8 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="discount-code-wrapper">
 
-                                            {% if couponmsg %}
-                                                    <p style="font-size: 15px;color:red;">{{couponmsg}}!</p>
+                                            {% if coupon_msg %}
+                                                    <p style="font-size: 15px;color:red;">{{coupon_msg}}!</p>
                                             {% endif %}
 
                                     <div class="title-wrap">
@@ -142,13 +142,11 @@
 {% block domready %}
   $("#refresh_icon").on('click',function(e){
     var ddd=$(this);
-    console.log("ddddd");
     ddd.parent().parent().children(".product-remove").children("#refresh_submit").click()
   });
 
   $("#coupon_button").on('click',function(e){
     var ddd=$(this);
-    console.log("ddddd");
     ddd.parent().children("#coupon_submit").click()
   });
 

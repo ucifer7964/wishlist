@@ -12,6 +12,7 @@ router = APIRouter(
 )
 
 
+# This method will apply the coupon i.e. It will save the coupon id into session
 @router.post("/apply")
 def coupon_apply(request: Request, db: Session = Depends(get_db),
                  code: str = Form(...),
@@ -27,6 +28,7 @@ def coupon_apply(request: Request, db: Session = Depends(get_db),
     return RedirectResponse(url="/cart", status_code=status.HTTP_303_SEE_OTHER)
 
 
+# This method will remove the coupon i.e. It will clear the session regarding coupon
 @router.get("/remove")
 def coupon_apply(request: Request, current_user: int = Depends(OAuth2.get_current_user)):
     request.session['coupon_id'] = None

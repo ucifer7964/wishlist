@@ -68,30 +68,14 @@
                                     <input type="text" name="address" maxlength="250" required="" id="id_address">
                                 </div>
                             </div>
-<!--                            <div class="col-lg-12">-->
-<!--                                <div class="billing-info mb-20px">-->
-<!--                                    <label>Town / City</label>-->
-<!--                                    <input type="text" />-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="col-lg-6 col-md-6">-->
-<!--                                <div class="billing-info mb-20px">-->
-<!--                                    <label>State / County</label>-->
-<!--                                    <input type="text" />-->
-<!--                                </div>-->
-<!--                            </div>-->
+
                             <div class="col-lg-6 col-md-6">
                                 <div class="billing-info mb-20px">
                                     <label>Postcode / ZIP</label>
                                     <input type="number" name="postal_code" maxlength="25" required=""/>
                                 </div>
                             </div>
-<!--                            <div class="col-lg-6 col-md-6">-->
-<!--                                <div class="billing-info mb-20px">-->
-<!--                                    <label>Phone</label>-->
-<!--                                    <input type="number"  name="phone_number" maxlength="16" required=""/>-->
-<!--                                </div>-->
-<!--                            </div>-->
+
                             <div class="col-lg-6 col-md-6">
                                 <div class="billing-info mb-20px">
                                     <label>Email Address</label>
@@ -117,7 +101,7 @@
                                         {% for item in cart %}
                                             <li>
                                                 {{ item.quantity }}x {{ item.product.name }}
-                                                <span>Rs. &nbsp;{{ item.total_price}}</span>
+                                                <span>{{ item.total_price}}&nbsp;</span>
                                             </li>
                                         {% endfor %}
                                     </ul>
@@ -129,7 +113,7 @@
                                             <li style="color:red;">
                                                 <span>{{ cart.coupon.code }} ({{ cart.coupon.discount }}% off)</span>
                                                 <br>
-                                                <span>- Rs.&nbsp;{{ cart.get_discount()}}</span>
+                                                <span>- Rs.{{ cart.get_discount()}}&nbsp;</span>
                                             </li>
                                         {% endif %}
                                     </ul>
@@ -137,7 +121,7 @@
                                 <div class="your-order-total">
                                     <ul>
                                         <li class="order-total">Total</li>
-                                        <li><p>Rs.&nbsp;{{ cart.get_total_price_after_discount() }}&nbsp;</p></li>
+                                        <li><p>{{ cart.get_total_price_after_discount() }}&nbsp;</p></li>
                                     </ul>
                                 </div>
                             </div>

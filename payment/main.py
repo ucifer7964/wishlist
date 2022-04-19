@@ -10,14 +10,16 @@ router = APIRouter(
 )
 
 
+# This will be called if something goes wrong
 @router.get("/canceled")
 def cancel_payment(request: Request):
     template = env.get_template("canceled.html")
     return templates.TemplateResponse(template, {"request": request})
 
 
+# This function will be called if payment will be successful
 @router.get("/done")
-def cancel_payment(request: Request, db: Session = Depends(get_db)):
+def success_payment(request: Request, db: Session = Depends(get_db)):
     order_id = request.session.get('order_id')
     order = db.query(Order).filter_by(id=order_id).first()
     order.is_paid = True
