@@ -1,8 +1,10 @@
 from fastapi.encoders import jsonable_encoder
 from coupon.models import Coupon
 from shop.models import Product
+from config import settings
 
-secret_key = 'cart'
+
+secret_key = settings.session_key
 
 
 class Cart:

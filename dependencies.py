@@ -1,6 +1,7 @@
 from starlette.templating import Jinja2Templates
 from database import SessionLocal
 from jinja2 import FileSystemLoader, Environment
+from config import settings
 import stripe
 
 def get_db():
@@ -23,4 +24,4 @@ loader = FileSystemLoader([
 
 env = Environment(loader=loader)
 templates = Jinja2Templates(directory="templates")
-stripe.api_key = "sk_test_51Kj8lvSInkdhZrgnNfKwypIhEj1zMixSjOcpTdqu1p7rd1JbFABJZQy4ouagB4ZPp4JcPnYmFoF25SSWvakXCJ6R000ovlSL0p"
+stripe.api_key = settings.api_key

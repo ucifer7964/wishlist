@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     mail_from: EmailStr
     mail_password: str
     base_url: str
+    api_key: str
+    session_key: str
 
     class Config:
         env_file = ".env"

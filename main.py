@@ -22,8 +22,10 @@ from payment import main
 from database import engine
 from User import main
 from context_processors import CartMiddleware
+from config import settings
 
-secret_key = 'cart'
+
+secret_key = settings.session_key
 
 middleware = [
     Middleware(SessionMiddleware, secret_key=secret_key),
